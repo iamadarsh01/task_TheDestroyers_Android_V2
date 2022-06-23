@@ -8,10 +8,20 @@ import androidx.annotation.Nullable;
 
 public class databaseHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "TODO DATABASE";
+    private SQLiteDatabase db;
 
-    public databaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    private static final String DATABASE_NAME = "TODO DATABASE";
+    private static final String TABLE_NAME = "TODO TABLE";
+    private static final String COL_1 = "ID";
+    private static final String COL_2 = "TASK";
+    private static final String COL_3 = "STATUS";
+
+
+
+
+
+    public databaseHelper(@Nullable Context context) {
+        super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
