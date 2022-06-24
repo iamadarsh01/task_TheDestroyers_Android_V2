@@ -1,10 +1,8 @@
 package com.example.task_thedestroyers_android_v2.Model;
 
 public class toDoModel {
-    private  String task;
-
-
-    private  int id, status;  //task checked status
+    private String task;
+    private int id , status;
 
     public String getTask() {
         return task;
