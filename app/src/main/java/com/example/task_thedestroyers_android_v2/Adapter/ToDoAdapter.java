@@ -1,7 +1,6 @@
 package com.example.task_thedestroyers_android_v2.Adapter;
 
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,12 +12,11 @@ import android.widget.CompoundButton;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.task_thedestroyers_android_v2.utils.databaseHelper;
-
-
+import com.example.task_thedestroyers_android_v2.AddNewTask;
 import com.example.task_thedestroyers_android_v2.MainActivity;
-import com.example.task_thedestroyers_android_v2.R;
 import com.example.task_thedestroyers_android_v2.Model.toDoModel;
+import com.example.task_thedestroyers_android_v2.R;
+import com.example.task_thedestroyers_android_v2.utils.databaseHelper;
 
 import java.util.List;
 
@@ -87,11 +85,19 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
     public void editItem(int position){
         toDoModel item  = mList.get(position);
 
+        //For Passing data to fragment from Activity
+
         Bundle bundle = new Bundle();
         bundle.putInt("id", item.getId());
         bundle.putString("task", item.getTask());
 
-        //***************
+        AddNewTask task = new AddNewTask();
+        task.show(activity.getSupportFragmentManager(), task.getTag());
+
+
+
+
+
 
 
     }
