@@ -1,6 +1,7 @@
 package com.example.task_thedestroyers_android_v2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +13,7 @@ import com.example.task_thedestroyers_android_v2.Adapter.ToDoAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.example.task_thedestroyers_android_v2.utils.databaseHelper;
 import com.example.task_thedestroyers_android_v2.Model.toDoModel;
+import com.example.task_thedestroyers_android_v2.recyclerViewTouchHelper;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -58,6 +60,9 @@ public class MainActivity extends AppCompatActivity implements onDialogCloseList
 
             }
         });
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new recyclerViewTouchHelper(adapter));
+        itemTouchHelper.attachToRecyclerView(mRecyclerView);
 
 
 
