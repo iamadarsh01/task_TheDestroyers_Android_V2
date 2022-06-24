@@ -1,5 +1,7 @@
 package com.example.task_thedestroyers_android_v2;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -28,6 +30,12 @@ public class AddNewTask extends BottomSheetDialogFragment {
     private Button mSaveButton;
 
     private databaseHelper myDb;
+
+    public static AddNewTask newInstance(){
+        return new AddNewTask();
+    }
+
+
 
     @Nullable
     @Override
@@ -96,8 +104,16 @@ return v;
                 }
                 else {
                     toDoModel item = new toDoModel();
+                    item.setTask(text);
+                    item.setStatus(0);
+
+                    myDb.insertTask(item);
+
+
 
                 }
+                dismiss();
+                //To dismiss current fragment
 
 
             }
@@ -108,5 +124,11 @@ return v;
 
 
 
+    }
+
+    @Override
+    public void onDismiss(@NonNull DialogInterface dialog) {
+        super.onDismiss(dialog);
+        Activity activity = getActivity();
     }
 }
