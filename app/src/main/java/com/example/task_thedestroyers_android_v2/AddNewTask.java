@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.task_thedestroyers_android_v2.Model.toDoModel;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -71,10 +73,32 @@ return v;
                         mSaveButton.setEnabled(false);
                         mSaveButton.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
                     }
+                    else {
+                        mSaveButton.setEnabled(true);
+                        mSaveButton.setBackgroundColor(getResources().getColor(R.color.purple_200));
+                    }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        boolean finalIsUpdate = isUpdate;
+        mSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String text = mEditText.getText().toString();
+
+                if (finalIsUpdate){
+                    myDb.updateTask(bundle.getInt("id"), text);
+                }
+                else {
+                    toDoModel item = new toDoModel();
+
+                }
+
 
             }
         });
