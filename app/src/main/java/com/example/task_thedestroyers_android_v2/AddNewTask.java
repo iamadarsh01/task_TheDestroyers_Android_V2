@@ -1,6 +1,8 @@
 package com.example.task_thedestroyers_android_v2;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +44,40 @@ return v;
         myDb = new databaseHelper(getActivity());
 
         boolean isUpdate = false;
+
+        Bundle bundle = getArguments();
+
+        if (bundle != null){
+            isUpdate = true;
+
+            String task = bundle.getString("task");
+
+            mEditText.setText(task);
+
+            if (task.length()>0){
+                mSaveButton.setEnabled(false);
+            }
+        }
+
+        mEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    if (charSequence.toString().equals("")){
+                        mSaveButton.setEnabled(false);
+                        mSaveButton.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
+                    }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
 
 
