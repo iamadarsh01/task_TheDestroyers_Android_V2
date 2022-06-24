@@ -23,7 +23,9 @@ import com.example.task_thedestroyers_android_v2.utils.databaseHelper;
 
 public class AddNewTask extends BottomSheetDialogFragment {
 
-    private  static  final  String TAG = "com.example.task_thedestroyers_android_v2.AddNewTask";
+
+
+    public static  final  String TAG = "com.example.task_thedestroyers_android_v2.AddNewTask";
 
     //widgets
     private EditText mEditText;
@@ -130,5 +132,11 @@ return v;
     public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
         Activity activity = getActivity();
+
+        if (activity instanceof onDialogCloseListener){
+            ((onDialogCloseListener)activity).onDialogClose(dialog);
+        }
+
+
     }
 }
