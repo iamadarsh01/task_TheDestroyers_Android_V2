@@ -54,5 +54,32 @@ public class databaseHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
 
+        values.put(COL_2, model.getTask());
+        values.put(COL_3, 0);
+
+        db.insert(TABLE_NAME, null, values);
+
+
+
     }
+    public  void  updateTask(int id, String task){
+        db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(COL_2, task);
+        db.update(TABLE_NAME, values,"ID+?", new String[]{String.valueOf(id)});
+    }
+
+    
+    public  void updateStaus(int id, int status){
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COL_3, status);
+        db.update(TABLE_NAME, values, "ID = ?", new String[]{String.valueOf(id)});
+    }
+
+
+
 }
